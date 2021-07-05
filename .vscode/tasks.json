@@ -1,0 +1,27 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Webpack Dev Server",
+      "type": "process",
+      "isBackground": true,
+      "command": "webpack-dev-server",
+      "problemMatcher": {
+        "owner": "typescript",
+        "fileLocation": "absolute",
+        "pattern": {
+          "regexp": "^(\\w+)Error:\\s+(.+):\\s+(.+)\\s+\\((\\d+):(\\d+)\\)$",
+          "file": 2,
+          "message": 3,
+          "line": 4,
+          "column": 5
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "^.+:\\s+Hash:\\s+[a-f0-9]+$",
+          "endsPattern": "^.+:\\s+(Compiled successfully|Failed to compile)\\.$"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+# Ignore version control files:
+.git/
+.gitignore
+
+# Ignore github templates:
+.github/
+
+# Ignore docker and environment files:
+*Dockerfile
+docker-compose*.yml
+**/*.env
+.dockerignore
+
+# Ignore log files:
+log/*.log
+
+# Ignore temporary files:
+tmp/
+!tmp/pids/.keep
+
+# Ignore master key for decrypting credentials and more.
+/config/master.key
+
+/public/packs
+/public/packs-test
+/node_modules
+/yarn-error.log
+yarn-debug.log*
+.yarn-integrity
+
+# Ignore OS artifacts:
+**/.DS_Store
+
+# Ignore database dumps:
+db/dumps
+
+# 3: Ignore Development container's Home artifacts:
+# 3.1: Ignore bash / IRB / Byebug history files
+.*_hist*
+
+# 3.3: bundler stuff
+.bundle/*
+
+# 3.4: Codeclimate stuff:
+.codeclimate.yml
+.csslintrc
+.eslintignore
+.eslintrc
+coffeelint.json
+.rubocop.yml
+.rubocop-rails.yml
+.reek.yml
+.scss-lint.yml
+
+# Ignore test coverage reports:
+coverage/*
+
+# Ignore CI/CD Files:
+.semaphore
+ci-compose.yml
+
+# Ignore all dotenv files:
+**/*.env
+
+# Ignore RSpec state:
+spec/examples.txt
+

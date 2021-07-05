@@ -1,0 +1,23 @@
+{
+  "editor.formatOnSave": false,
+  "files.insertFinalNewline": true,
+  "files.exclude": {
+    ".*_hist*": true,
+    ".bundle": true,
+    ".config": true,
+    ".gem": true,
+    ".gnupg": true,
+    ".local": true,
+    ".solargraph": true,
+    ".viminfo": true,
+    ".vscode-server": true,
+    ".webdrivers": true,
+    ".cache": true,
+    ".ssh": true,
+    ".yarn": true,
+  },
+  "solargraph.autoformat": true,
+  "solargraph.diagnostics": true,
+  "solargraph.formatting": true,
+  "solargraph.useBundler": true
+}

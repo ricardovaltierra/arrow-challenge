@@ -1,0 +1,98 @@
+version: "3.7"
+
+volumes:
+  gem_bundle:   # Used to store the app's gem libraries...
+  node_modules: # Used to store the app's node modules...
+
+services:
+  arrow_challenge:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: development
+      args:
+        APP_PATH: ${PWD:-/srv/arrow-challenge}
+        BUILDKIT_INLINE_CACHE: "1"
+        DEVELOPER_UID: ${UID:-1000}
+        DEVELOPER_USERNAME: ${USER:-you}
+    image: icalialabs/arrow-challenge:development
+    volumes:
+      # Mount the app code into the app containers:
+      - .:${PWD:-/srv/arrow-challenge}
+
+      # After mounting the app code, we will use volumes to store the project's
+      # gem libraries and node modules.
+
+      # In the case of the gem libraries, the "gem_bundle" volume will be
+      # initialized with the development image's installed gems. Gems can be
+      # added later during the development process without re-building the
+      # development image:
+      - gem_bundle:/usr/local/bundle
+
+      # In the case of the node modules, the "node_modules" volume will also be
+      # initialized with the development image's installed node modules. Also,
+      # notice how we're mounting the "node_modules" volume *inside* the mounted
+      # source code, effectively replacing any contents you might have on your
+      # project's "node_modules" folder in the container, offering several
+      # advantages:
+      # - We can run the frontend app either from the host (i.e. macOS) or
+      #   using containers without having the host & container clobber the npm
+      #   each other's packages, or avoid conflicting versions for macOS / Linux
+      # - Speeds up the npm operations on the container when running on
+      #   macOS/Windows, since a local volume bind on mac/win is significantly
+      #   slower than a Docker volume, and node module install is very sensitive
+      #   to I/O performance
+      - node_modules:${PWD:-/srv/arrow-challenge}/node_modules
+
+    # Keep the stdin open, so we can attach to our app container's process
+    # and do things such as byebug, etc:
+    stdin_open: true
+
+    # Enable sending signals (CTRL+C, CTRL+P + CTRL+Q) into the container:
+    tty: true
+
+    # The command we want to execute by default when running the container
+    # [Optional] Required for ptrace-based debuggers like C++, Go, and Rust
+    cap_add:
+      - SYS_PTRACE
+      - NET_ADMIN
+    security_opt:
+      - seccomp:unconfined
+
+    ports:
+      - ${ARROW_CHALLENGE_WEB_PORT:-3000}:3000
+      - ${ARROW_CHALLENGE_WEBPACKER_DEV_SERVER_PORT:-3035}:3035
+
+    # Overrides default command so things don't shut down after the process ends.
+    command: /bin/sh -c "while sleep 1000; do :; done"
+  
+    depends_on:
+      - chrome
+      - postgres
+
+    # Specify environment variables available for our app containers. We'll
+    # leave a YML anchor in case we need to override or add more variables if
+    # needed on each app service:
+    environment: &app_environment
+      # Rails config:
+      RAILS_LOG_TO_STDOUT: "true"
+
+      # Tells the test suite to use the "chrome" service instead of a local
+      # chrome install:
+      CHROME_URL: http://chrome:3333
+
+
+      DEBIAN_FRONTEND: dialog
+      VSCODE_CONTEXT: "yes"
+
+      DATABASE_URL: postgres://postgres:3x4mpl3P455w0rd@postgres:5432/?encoding=unicode
+      
+      
+
+      # Bind the webpack dev server service to 0.0.0.0 to allow connections from
+      # the host:
+      WEBPACKER_DEV_SERVER_HOST: 0.0.0.0
+      WEBPACKER_DEV_SERVER_PUBLIC: localhost:${ARROW_CHALLENGE_WEBPACKER_DEV_SERVER_PORT:-3035}
+
+      # Use VSCode as editor:
+      EDITOR: code -w
