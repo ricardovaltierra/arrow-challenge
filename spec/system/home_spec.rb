@@ -11,6 +11,6 @@ RSpec.describe 'Home', type: :system do
     #
     # debug binding
 
-    expect(page).to have_content 'Find me in app/views/home/show.html.erb'
+    expect(page).to have_content 'Welcome Icalier!'
   end
 end
