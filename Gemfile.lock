@@ -64,6 +64,7 @@ GEM
       public_suffix (>= 2.0.2, < 5.0)
     ast (2.4.2)
     backport (1.2.0)
+    bcrypt (3.1.16)
     benchmark (0.1.1)
     bindex (0.8.1)
     bootsnap (1.7.5)
@@ -87,6 +88,12 @@ GEM
     debase (0.2.4.1)
       debase-ruby_core_source (>= 0.10.2)
     debase-ruby_core_source (0.10.12)
+    devise (4.8.0)
+      bcrypt (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 4.1.0)
+      responders
+      warden (~> 1.2.3)
     diff-lcs (1.4.4)
     e2mmap (0.1.0)
     erubi (1.10.0)
@@ -133,6 +140,7 @@ GEM
       racc (~> 1.4)
     on_container (0.0.14)
       activesupport (>= 4)
+    orm_adapter (0.5.0)
     parallel (1.20.1)
     parser (3.0.1.1)
       ast (~> 2.4.1)
@@ -186,6 +194,9 @@ GEM
       psych (~> 3.1)
       rainbow (>= 2.0, < 4.0)
     regexp_parser (2.1.1)
+    responders (3.0.1)
+      actionpack (>= 5.0)
+      railties (>= 5.0)
     reverse_markdown (2.0.0)
       nokogiri
     rexml (3.2.5)
@@ -265,6 +276,8 @@ GEM
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
     unicode-display_width (2.0.0)
+    warden (1.2.9)
+      rack (>= 2.0.9)
     web-console (4.1.0)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -287,11 +300,13 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bcrypt (~> 3.1.7)
   bootsnap (>= 1.4.4)
   byebug
   capybara (~> 3.35, >= 3.35.3)
   cuprite (~> 0.13)
   debase (~> 0.2.4.1)
+  devise (~> 4.2)
   factory_bot_rails (~> 6.1)
   jbuilder (~> 2.7)
   listen (~> 3.3)
