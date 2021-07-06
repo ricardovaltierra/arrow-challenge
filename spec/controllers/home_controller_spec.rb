@@ -11,4 +11,9 @@ RSpec.describe HomeController, type: :controller do
     get :show
     expect(response).to be_successful
   end
+
+  it "should get dashboard" do
+    get :dashboard
+    expect(response).to be_successful
+  end
 end
