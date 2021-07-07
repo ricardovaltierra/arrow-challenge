@@ -71,7 +71,7 @@ GEM
       erubi (>= 1.0.0)
       rack (>= 0.9.0)
     bindex (0.8.1)
-    binding_of_caller (0.7.3)
+    binding_of_caller (1.0.0)
       debug_inspector (>= 0.0.1)
     bootsnap (1.7.5)
       msgpack (~> 1.0)
@@ -92,6 +92,10 @@ GEM
     cuprite (0.13)
       capybara (>= 2.1, < 4)
       ferrum (~> 0.11.0)
+    database_cleaner-active_record (2.0.1)
+      activerecord (>= 5.a)
+      database_cleaner-core (~> 2.0.0)
+    database_cleaner-core (2.0.1)
     debase (0.2.4.1)
       debase-ruby_core_source (>= 0.10.2)
     debase-ruby_core_source (0.10.12)
@@ -317,6 +321,7 @@ DEPENDENCIES
   byebug
   capybara (~> 3.35, >= 3.35.3)
   cuprite (~> 0.13)
+  database_cleaner-active_record
   debase (~> 0.2.4.1)
   devise (~> 4.2)
   factory_bot_rails (~> 6.1)
