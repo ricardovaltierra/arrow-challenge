@@ -42,6 +42,8 @@ group :development, :test do
   gem 'factory_bot_rails', '~> 6.1'
 
   gem 'shoulda-matchers', '~> 4.0'
+
+  gem 'faker', '~> 1.6', '>= 1.6.6'
 end
 
 group :development do
@@ -65,6 +67,10 @@ group :development do
 
   # IDE tools for code completion, inline documentation, and static analysis
   gem 'solargraph', '~> 0.42.3', require: false
+
+  gem 'better_errors'
+
+  gem 'binding_of_caller'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
