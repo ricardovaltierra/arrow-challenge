@@ -18,7 +18,7 @@ RSpec.describe 'User sign up', type: :system do
     fill_in 'user_password_confirmation', with: password
     click_button 'Sign up'
 
-    expect(page).to have_content('Welcome! You have signed up successfully.')
+    expect(page).to have_content('Here are your current arrows')
     expect(page).to have_text email
   end
 

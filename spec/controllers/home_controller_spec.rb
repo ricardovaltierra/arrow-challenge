@@ -7,8 +7,8 @@ RSpec.describe HomeController, type: :controller do
     expect(subject.current_user).to_not eq(nil)
   end
 
-  it 'should get show' do
-    get :show
+  it 'should get index' do
+    get :index
     expect(response).to be_successful
   end
 
