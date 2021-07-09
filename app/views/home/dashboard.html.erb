@@ -1,5 +1,7 @@
 <div>
   <%= link_to "Home", root_path %>
   <h2>Here's the list of Users that you can give an arrow today!</h2>
-  <%= render @users %>
+  <% unless @users.blank? %>
+    <%= render @users %>  
+  <% end %>
 </div>
