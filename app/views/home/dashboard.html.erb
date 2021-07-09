@@ -1,2 +1,5 @@
-<h1>Home#dashboard</h1>
-<p>Find me in app/views/home/dashboard.html.erb</p>
+<div>
+  <%= link_to "Home", root_path %>
+  <h2>Here's the list of Users that you can give an arrow today!</h2>
+  <%= render @users %>
+</div>
