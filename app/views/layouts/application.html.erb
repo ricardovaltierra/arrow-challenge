@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>ArrowChallenge</title>
+    <title>Arrows</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbo-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbo-track': 'reload' %>
   </head>
 
   <body>
@@ -15,7 +15,7 @@
     <p class="alert"><%= alert %></p>
     <% if user_signed_in? %>
       <span>Hi <strong><%= current_user.name %></strong>, with mail: <%= current_user.email %></span>
-      <p><%= link_to 'Log out', destroy_user_session_path, method: :delete %></p>
+      <p><%= button_to 'Log out', destroy_user_session_path, method: :delete %></p>
       <p><%= link_to 'Edit Account', edit_user_registration_path %></p>
     <% else %>
       <span>
