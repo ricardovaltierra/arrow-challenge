@@ -1,2 +1,24 @@
 // Import Bootstrap v5  
+@import "~bootstrap//scss/functions";
+@import "~bootstrap//scss/variables";
+@import "~bootstrap//scss/mixins";
+
+$custom-colors: (
+  "ic-green": #2bcfb9
+);
+
+$theme-colors: map-merge($theme-colors, $custom-colors);
+
 @import "~bootstrap/scss/bootstrap";
+
+.icalia-login {
+  background-image: url('./icalia_login.png');
+  background-repeat: no-repeat;
+  height: 118px;
+}
+
+.icalia-logo-side {
+  background-image: url('./icalia_logo_side.png');
+  background-repeat: no-repeat;
+  background-position: center;
+}

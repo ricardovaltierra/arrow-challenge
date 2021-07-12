@@ -34,7 +34,6 @@ RSpec.describe 'User Log in', type: :system do
     click_button 'Log in'
 
     expect(page).to have_no_text 'Signed in successfully.'
-    expect(page).to have_text 'Remember me'
-    expect(page).to have_link 'Forgot your password?'
+    expect(page).to have_text 'Invalid Email or password.'
   end
 end
