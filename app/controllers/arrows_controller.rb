@@ -20,7 +20,7 @@ class ArrowsController < ApplicationController
   private
 
   def set_users
-    @users = User.all
+    @users = User.where.not(id: current_user.id)
   end
 
   def arrow_params
