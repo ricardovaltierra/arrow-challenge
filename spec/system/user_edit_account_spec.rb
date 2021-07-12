@@ -71,10 +71,4 @@ RSpec.describe 'User edit account', type: :system do
 
     expect(page).to have_text "Current password can't be blank"
   end
-
-  scenario 'for canceling account' do
-    click_button 'Cancel my account'
-    
-    expect(page).to have_text 'You need to sign in or sign up before continuing.'
-  end
 end

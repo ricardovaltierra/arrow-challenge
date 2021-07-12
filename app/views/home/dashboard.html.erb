@@ -1,5 +1,8 @@
-<div>
-  <%= link_to "Home", root_path %>
+<div class="col-12 container bg-primary">
+  <div class="row mt-1 bg-warning">
+    <p class="<%= 'd-none' unless notice %> alert alert-warning m-0" role="alert"><%= notice %></p>
+    <p class="<%= 'd-none' unless alert %> alert alert-danger m-0" role="alert"><%= alert %></p>
+  </div>
   <h2>Here's the list of Users that you can give an arrow today!</h2>
   <% unless @users.blank? %>
     <%= render @users %>  

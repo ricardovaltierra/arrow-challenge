@@ -13,8 +13,9 @@ RSpec.describe 'User Log in', type: :system do
     fill_in 'user_password', with: @user.password
     click_button 'Log in'
 
-    expect(page).to have_text 'Here are your current arrows'
-    expect(page).to have_link 'Log out'
+    expect(page).to have_text 'Signed in successfully.'
+    expect(page).to have_text "Hi #{@user.name}"
+    expect(page).to have_content @user.email
     expect(page).to have_current_path root_path
   end
 
@@ -25,7 +26,7 @@ RSpec.describe 'User Log in', type: :system do
 
     expect(page).to have_no_text 'Signed in successfully.'
     expect(page).to have_text 'Invalid Email or password.'
-    expect(page).to have_no_link 'Log out'
+    expect(page).to have_no_button 'Log out'
   end
 
   scenario 'invalid with invalid password' do
@@ -34,7 +35,6 @@ RSpec.describe 'User Log in', type: :system do
     click_button 'Log in'
 
     expect(page).to have_no_text 'Signed in successfully.'
-    expect(page).to have_text 'Remember me'
-    expect(page).to have_link 'Forgot your password?'
+    expect(page).to have_text 'Invalid Email or password.'
   end
 end

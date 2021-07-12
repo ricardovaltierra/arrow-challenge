@@ -1,31 +1,51 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>ArrowChallenge</title>
+    <title>Arrows</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbo-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbo-track': 'reload' %>
   </head>
 
-  <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <% if user_signed_in? %>
-      <span>Hi <strong><%= current_user.name %></strong>, with mail: <%= current_user.email %></span>
-      <p><%= link_to 'Log out', destroy_user_session_path, method: :delete %></p>
-      <p><%= link_to 'Edit Account', edit_user_registration_path %></p>
-    <% else %>
-      <span>
-        Please <%= link_to 'Log in', new_user_session_path %> 
-        or 
-        <%= link_to 'Sign Up', new_user_registration_path %>
-        .
-      </span>
-      
-    <% end %>
-    <%= yield %>
+  <body class='mx-auto'>
+    <div class="container-fluid pb-1 bg-ic-green vh-100">
+      <% if user_signed_in? %>
+        <nav class="row navbar navbar-expand-lg navbar-light bg-light">
+          <div class="container-fluid">
+            <a href="#" class="navbar-brand">Navbar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse d-flex flex-row-reverse bd-highlight" id="navbarSupportedContent">
+              <ul class="navbar-nav mb-2 mb-lg-0 bd-highlight">
+                <li class="nav-item">
+                  <%= link_to "Home", root_path, class: "nav-link #{'active' if request.env['PATH_INFO'] == root_path}" %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "Dashboard", dashboard_path, class: "nav-link #{'active' if request.env['PATH_INFO'] == dashboard_path}" %>
+                </li>
+                <li class="nav-item dropdown">
+                  <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <%= current_user.email %>
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><%= link_to 'Edit Account', edit_user_registration_path, class: 'dropdown-item' %></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><%= button_to 'Log out', destroy_user_session_path, class: 'dropdown-item btn btn-link', method: :delete %></li>
+                  </ul>
+                </li>
+              </ul>
+              <span class="bd-highlight me-auto">Hi <strong><%= current_user.name %></strong></span>
+            </div>
+          </div>
+        </nav>
+      <% end %>
+      <main class='row h-100'>
+        <%= yield %>
+      </main>
+    </div>
   </body>
 </html>
