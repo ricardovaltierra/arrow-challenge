@@ -2,6 +2,10 @@ class ArrowsController < ApplicationController
   before_action :set_users, only: [:new, :create]
   before_action :authenticate_user!
 
+  def show
+    @arrow = Arrow.find(params[:id])
+  end
+
   def new
     @arrow = Arrow.new
   end
