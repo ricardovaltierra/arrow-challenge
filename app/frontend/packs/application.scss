@@ -1,3 +1,5 @@
+// Import 'Poppins' light-300 & bold-700 from GF
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;700&display=swap');
 // Import Bootstrap v5  
 @import "~bootstrap//scss/functions";
 @import "~bootstrap//scss/variables";
@@ -11,6 +13,10 @@ $theme-colors: map-merge($theme-colors, $custom-colors);
 
 @import "~bootstrap/scss/bootstrap";
 
+* {
+  font-family: 'Poppins', sans-serif !important;
+}
+
 .icalia-login {
   background-image: url('./icalia_login.png');
   background-repeat: no-repeat;
@@ -21,4 +27,13 @@ $theme-colors: map-merge($theme-colors, $custom-colors);
   background-image: url('./icalia_logo_side.png');
   background-repeat: no-repeat;
   background-position: center;
+}
+
+.avatar {
+  background-image: url('./avatar.png');
+  background-repeat: no-repeat;
+  background-position: 50% 20%;
+  background-size: 150px;
+  width: 218px;
+  height: 318px;
 }

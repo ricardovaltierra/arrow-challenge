@@ -3,9 +3,23 @@
     <p class="<%= 'd-none' unless notice %> alert alert-warning m-0" role="alert"><%= notice %></p>
     <p class="<%= 'd-none' unless alert %> alert alert-danger m-0" role="alert"><%= alert %></p>
   </div>
-  <h2>Here are your current arrows</h2>
+  <div class="row d-flex">
+    <div class="col-2 d-flex bg-light justify-content-center"><div class="avatar"></div></div>
+    <div class="col-10 container bg-light">
+      <div class="row mt-5 mb-2">
+        <h5 class="fw-bolder text-secondary">Icalier Rodriguez</h5>
+      </div>
+      <div class="row my-2">
+        <h3 class="fw-bolder text-warning">120 points</h3>
+      </div>
+      <div class="row my-2">
+        <%= link_to "#", class: 'col-1 btn btn-primary btn-sm', data: { toggle: 'modal', target: '#newArrowModal' } do %>
+          <p class="fw-bolder my-1 fs-7">Create arrow</p>
+        <% end %>
+      </div>
+    </div>
+  </div>
   <% unless @arrows.blank? %>
     <%= render @arrows %>
   <% end %>
 </div>
-
