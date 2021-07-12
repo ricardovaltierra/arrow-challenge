@@ -10,22 +10,18 @@
     <%= javascript_pack_tag 'application', 'data-turbo-track': 'reload' %>
   </head>
 
-  <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <% if user_signed_in? %>
-      <span>Hi <strong><%= current_user.name %></strong>, with mail: <%= current_user.email %></span>
-      <p><%= button_to 'Log out', destroy_user_session_path, method: :delete %></p>
-      <p><%= link_to 'Edit Account', edit_user_registration_path %></p>
-    <% else %>
-      <span>
-        Please <%= link_to 'Log in', new_user_session_path %> 
-        or 
-        <%= link_to 'Sign Up', new_user_registration_path %>
-        .
-      </span>
-      
-    <% end %>
-    <%= yield %>
+  <body class='mx-auto'>
+    <div class="container-fluid pb-1 bg-ic-green vh-100">
+      <div class="row d-lg-block nav-cont">
+        <% if user_signed_in? %>
+          <span>Hi <strong><%= current_user.name %></strong>, with mail: <%= current_user.email %></span>
+          <p><%= button_to 'Log out', destroy_user_session_path, method: :delete %></p>
+          <p><%= link_to 'Edit Account', edit_user_registration_path %></p>
+        <% end %>
+      </div>
+      <main class='row h-100'>
+        <%= yield %>
+      </main>
+    </div>
   </body>
 </html>
