@@ -1,0 +1,40 @@
+<h2>New arrow</h2>
+<p>Find me in here</p>
+
+<%= form_with scope: :arrow, url: arrows_path, local: true, html: { 'data-turbo' => 'false'} do |f| %>
+  <% if @arrow.errors.any? %>
+    <div class="row" id="error_explanation">
+      <h2>
+        <%= I18n.t("errors.messages.not_saved",
+                   count: @arrow.errors.count,
+                   resource: @arrow.class.model_name.human.downcase)
+         %>
+      </h2>
+      <ul>
+        <% @arrow.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="row">
+    <div class="col-6">
+      <div class="form-group">
+        <%= f.label :owner_id, 'for who?'.upcase, class: 'form_label' %>
+        <%= f.collection_select :owner_id, @users, :id, :name,
+                                { :prompt => 'Select a partner' },
+                                class: 'form_control' %>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="form-group">
+        <%= f.label :description, 'reason'.upcase, class: 'form_label' %>
+        <%= f.text_area :description, class: 'form_control' %>
+      </div>
+    </div>
+    <div class="col-auto">
+      <%= link_to 'Cancel', root_path, class: 'btn btn-primary' %>
+      <%= f.submit 'send'.upcase, class: 'btn btn-primary' %>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,17 @@
+<div class="col-3 offset-md-4 pt-3 bg-light align-self-center px-0">
+  <p class="text-secondary mx-3">
+    <strong>DATE:  </strong>
+    <%= l @arrow.created_at, format: :short %>
+  </p>
+  <p class="text-secondary mx-3">
+    <strong>BY WHO: </strong>
+    <%= @author_name %>
+  </p>
+  <p class="text-secondary mx-3"> 
+    <strong>WHY?</strong>
+    <%= @arrow.description %>
+  </p>
+  <%= link_to root_path, class: 'col-12 btn btn-warning btn-sm mt-4' do %>
+    <p class="my-1 fs-6 text-light">Go back</p>
+  <% end %>
+</div>

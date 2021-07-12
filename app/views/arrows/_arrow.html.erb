@@ -1,2 +1,11 @@
-<span><%= arrow.author.name %></span>
-<p><%= l arrow.created_at, format: :short %></p>
+<div class="col-3 my-3 mx-1 bg-white px-0 pt-3">
+  <p class="text-secondary mx-3"><strong>DATE:</strong> <%= l arrow.created_at, format: :short %></p>
+  </p><p class="text-secondary mx-3"><strong>AUTHOR:</strong> <%= arrow.author.name %></p>
+  <%= link_to arrow_path(arrow.id), class: 'col-12 btn btn-warning btn-sm py-2 d-flex justify-content-end px-4' do %>
+    <p class="mx-3 my-1 fs-7 text-light fs-6">More info</p>
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="align-self-center text-light bi bi-chevron-down" viewBox="0 0 16 16">
+      <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+    </svg>
+  <% end %>
+</div>
+
