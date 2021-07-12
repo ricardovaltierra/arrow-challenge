@@ -1,4 +1,4 @@
-<div class="col-12 container bg-primary">
+<div class="col-12 container">
   <div class="row mt-1 bg-warning">
     <p class="<%= 'd-none' unless notice %> alert alert-warning m-0" role="alert"><%= notice %></p>
     <p class="<%= 'd-none' unless alert %> alert alert-danger m-0" role="alert"><%= alert %></p>
@@ -20,6 +20,8 @@
     </div>
   </div>
   <% unless @arrows.blank? %>
-    <%= render @arrows %>
+    <div class="row d-flex flex-row px-5 justify-content-between">
+      <%= render @arrows %>
+    </div>
   <% end %>
 </div>

@@ -10,8 +10,8 @@
     <%= javascript_pack_tag 'application', 'data-turbo-track': 'reload' %>
   </head>
 
-  <body class='mx-auto'>
-    <div class="container-fluid pb-1 bg-ic-green vh-100">
+  <body class="mx-auto <%= (request.env['PATH_INFO'] == user_session_path || request.env['PATH_INFO'] == '/users/sign_in.turbo_stream') ? 'bg-ic-green' : 'bg-secondary-light' %>">
+    <div class="container-fluid pb-1 vh-100">
       <% if user_signed_in? %>
         <nav class="row navbar navbar-expand-lg navbar-light bg-light">
           <div class="container-fluid">
@@ -43,7 +43,7 @@
           </div>
         </nav>
       <% end %>
-      <main class='row h-100'>
+      <main class="row h-100">
         <%= yield %>
       </main>
     </div>

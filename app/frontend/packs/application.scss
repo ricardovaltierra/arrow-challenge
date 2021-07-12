@@ -6,7 +6,8 @@
 @import "~bootstrap//scss/mixins";
 
 $custom-colors: (
-  "ic-green": #2bcfb9
+  "ic-green": #2bcfb9,
+  "secondary-light": #c0d4da
 );
 
 $theme-colors: map-merge($theme-colors, $custom-colors);
@@ -37,3 +38,4 @@ $theme-colors: map-merge($theme-colors, $custom-colors);
   width: 218px;
   height: 318px;
 }
+
