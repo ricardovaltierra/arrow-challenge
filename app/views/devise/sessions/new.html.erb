@@ -1,27 +1,42 @@
-<h2>Welcome Icalier!</h2>
-<span>Sign In to continue</span>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+  <div class='col-6 row h-100'>
+    <div class="col-9 container bg-white h-100 offset-md-3 p-5">
+      <div class="row m-5">
+        <div class="col-12 icalia-login mb-5"></div>
+        <h1 class="col-12 fs-1 mb-0">Welcome Icalier!</h1>
+        <span class="col-12">Sign In to continue</span>
+        <div class="col-12 my-3">
+          <p class="<%= 'bg-transparent border-0 m-0' unless notice || alert %> notice alert-warning alert-dismissible fade show"><%= notice %></p>
+          <p class="<%= 'bg-transparent border-0 m-0' unless notice || alert %> alert alert-danger alert-dismissible fade show" role='alert'><%= alert %></p>
+        </div>
+        <%= form_for(resource, as: resource_name, html: { class: 'col-12 mb-5', 'data-turbo' => 'false'}, url: session_path(resource_name)) do |f| %>
+          <div class="field">
+            <%= f.label :email, 'E-mail'.upcase , class: 'form_label text-secondary mb-1' %><br />
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
+          </div>
+          <div class="field mt-4">
+            <%= f.label :password, 'password'.upcase, class: 'form_label text-secondary mb-1' %><br />
+            <%= f.password_field :password, autocomplete: "current-password", class: 'form-control'  %>
+          </div>
+          <div class="field mt-1 d-flex justify-content-around">
+            <% if devise_mapping.rememberable? %>
+              <div class="field col text-secondary">
+                <%= f.check_box :remember_me %>
+                <%= f.label :remember_me %>
+              </div>
+            <% end %>
+            <%= link_to "Forgot password?", new_password_path(resource_name), class: 'link-primary col offset-md-3 text-end link-primary text-decoration-none' %>
+          </div>
+          <div class="actions">
+            <%= f.submit "Log in", class: 'btn btn-primary btn-sm px-4 py-1 mt-4' %>
+          </div>
+        <% end %>
+        <div class="col-6 offset-md-3 text-secondary text-center mb-5">
+          <p>Or you can sign up with:</p>
+        </div>
+        <p class='col-12 mt-5 text-secondary text-center'>Don't have an account? <%= link_to "Sign up", new_registration_path(resource_name), class: 'link-primary text-decoration-none'%></p><br />
+      </div>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
-<% end %>
+  <div class="col-6 icalia-logo-side"></div>
 
-<%= render "devise/shared/links" %>
