@@ -1,13 +1,9 @@
 <div class='col-6 row h-100'>
-  <div class="col-9 container bg-white h-100 offset-md-3 p-1">
+  <div class="col-9 container bg-white h-100 offset-md-3 p-1 overflow-auto">
     <div class="row m-5">
       <div class="col-12 icalia-login mb-5"></div>
       <h1 class="col-12 fs-1 mb-0">Welcome Icalier!</h1>
       <span class="col-12">Sign In to continue</span>
-      <div class="col-12 my-3">
-        <p class="<%= 'bg-transparent border-0 m-0' unless notice || alert %> notice alert-warning alert-dismissible fade show"><%= notice %></p>
-        <p class="<%= 'bg-transparent border-0 m-0' unless notice || alert %> alert alert-danger alert-dismissible fade show" role='alert'><%= alert %></p>
-      </div>
       <%= form_for(resource, as: resource_name, html: { class: 'col-12 mb-5', 'data-turbo' => 'false'}, url: registration_path(resource_name)) do |f| %>
         <%= render "devise/shared/error_messages", resource: resource %>
         <div class="field">
