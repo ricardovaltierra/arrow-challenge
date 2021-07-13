@@ -11,7 +11,7 @@
         </div>
         <%= form_for(resource, as: resource_name, html: { class: 'col-12 mb-5', 'data-turbo' => 'false'}, url: session_path(resource_name)) do |f| %>
           <div class="field">
-            <%= f.label :email, 'E-mail'.upcase , class: 'form_label text-secondary mb-1' %><br />
+            <%= f.label :email, 'E-mail'.upcase, class: 'form_label text-secondary mb-1' %><br />
             <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
           </div>
           <div class="field mt-4">
