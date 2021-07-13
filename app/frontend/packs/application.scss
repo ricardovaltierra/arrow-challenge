@@ -39,3 +39,6 @@ $theme-colors: map-merge($theme-colors, $custom-colors);
   height: 318px;
 }
 
+ul {
+  list-style-type: none;
+}

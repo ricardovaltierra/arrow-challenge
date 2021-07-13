@@ -10,7 +10,7 @@
     <%= javascript_pack_tag 'application', 'data-turbo-track': 'reload' %>
   </head>
 
-  <body class="mx-auto <%= (request.env['PATH_INFO'] == user_session_path || request.env['PATH_INFO'] == '/users/sign_in.turbo_stream') ? 'bg-ic-green' : 'bg-secondary-light' %>">
+  <body class="mx-auto <%= set_bg_color %>">
     <div class="container-fluid pb-1 vh-100">
       <% if user_signed_in? %>
         <nav class="row navbar navbar-expand-lg navbar-light bg-light">
