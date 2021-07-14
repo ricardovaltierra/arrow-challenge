@@ -14,10 +14,4 @@ RSpec.describe 'User creates arrow', type: :system do
     click_button 'Log in'
     visit new_arrow_path
   end
-  
-  scenario 'with the required fields properly set' do
-    fill_in 'arrow_description', with: description
-    find('#arrow_owner_id option').find(@user_2.name).select_option
-    click_button 'send'.upcase
-  end
 end
