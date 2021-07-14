@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
   before_action :authenticate_user!
   def index
-    @arrows = Arrow.all.where(owner_id: current_user.id).includes(:author)
+    @arrows = Arrow.arrows_with_author current_user
   end
 
   def dashboard

@@ -4,16 +4,15 @@ class ArrowsController < ApplicationController
 
   def show
     @arrow = Arrow.find(params[:id])
-    @author_name = User.find(@arrow.author_id).name
+    @author = @arrow.author
   end
 
   def new
-    @arrow = Arrow.new
+    @arrow = current_user.authored_arrows.build
   end
 
   def create
-    @arrow = Arrow.new(arrow_params)
-    @arrow.author_id = current_user.id
+    @arrow = current_user.authored_arrows.build(arrow_params)
 
     if @arrow.save
       redirect_to root_path, notice: 'Great! Your arrow has been successfully sent!'
@@ -25,7 +24,7 @@ class ArrowsController < ApplicationController
   private
 
   def set_users
-    @users = User.where.not(id: current_user.id)
+    @users = User.to_select current_user
   end
 
   def arrow_params
