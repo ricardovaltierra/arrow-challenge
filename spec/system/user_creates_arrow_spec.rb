@@ -4,7 +4,6 @@ require 'system_helper'
 
 RSpec.describe 'User creates arrow', type: :system do 
   
-
   before do
     @user_1 = create :user
     @user_2 = create :user
