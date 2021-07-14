@@ -2,6 +2,8 @@
 
 # See https://evilmartians.com/chronicles/system-of-a-test-setting-up-end-to-end-rails-testing
 
+# Support added for the use of aria-label when matching
+Capybara.enable_aria_label = true
 # There's no need for increasing the "max wait time" with Cuprite, like
 # developers often do:
 Capybara.default_max_wait_time = 2
