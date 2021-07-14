@@ -4,7 +4,6 @@ class ArrowsController < ApplicationController
 
   def show
     @arrow = Arrow.find(params[:id])
-    @author = @arrow.author
   end
 
   def new
@@ -14,10 +13,13 @@ class ArrowsController < ApplicationController
   def create
     @arrow = current_user.authored_arrows.build(arrow_params)
 
-    if @arrow.save
-      redirect_to root_path, notice: 'Great! Your arrow has been successfully sent!'
-    else
-      render :new
+    respond_to do |format|
+      if @arrow.save
+        format.html { redirect_to root_path, notice: 'Great! Your arrow has been successfully sent!' }
+      else
+        format.turbo_stream
+        format.html { render :new }
+      end
     end
   end
 

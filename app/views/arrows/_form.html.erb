@@ -1,0 +1,28 @@
+<%= form_with scope: :arrow, url: arrows_path, id: dom_id(arrow), html: { class: 'col-12 mb-5' } do |f| %>
+  <div class="modal-header">
+    <h5 class="modal-title" id="newArrowLabel">Give a new arrow!</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+  </div>
+  <div class="modal-body">
+    <%= render "devise/shared/error_messages", resource: arrow %>
+    <div class="field">
+      <%= f.label :owner_id, 'for who?'.upcase, class: 'form_label text-secondary mb-2'  %>
+      <%= f.collection_select :owner_id, User.to_select(current_user), :id, :name,
+                              { :prompt => 'Select a partner' },
+                              class: 'form_control form-select mb-5', autofocus: true %>
+    </div>
+    <div class="field mt-4">
+      <%= f.label :description, 'Write here your reason...', class: 'form_label text-secondary mb-2 w-100' %>
+      <%= f.text_area :description, class: 'form_control mb-5' %>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <div>
+      <%= link_to 'Cancel', root_path, class: 'btn btn-secondary', data: { 'bs-dismiss': 'modal' } %>
+      <%= f.submit 'send'.upcase, class: 'btn btn-primary' %>
+    </div>
+  </div>
+<% end %>
+
+
+
