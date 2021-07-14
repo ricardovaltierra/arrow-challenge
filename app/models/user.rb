@@ -10,4 +10,8 @@ class User < ApplicationRecord
   has_many :owned_arrows, foreign_key: 'owner_id',
                           class_name: 'Arrow',
                           dependent: :destroy
+
+  scope :to_select, -> (current_user) { 
+    where('id != ?', current_user) 
+  }
 end
