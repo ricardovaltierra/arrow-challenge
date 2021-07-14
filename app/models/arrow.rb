@@ -6,6 +6,9 @@ class Arrow < ApplicationRecord
   belongs_to :owner, class_name: "User"
 
   scope :arrows_with_author, -> (current_user) { 
-      current_user.owned_arrows.includes(:author) 
-    }
+    current_user
+      .owned_arrows
+      .includes(:author)
+      .order('created_at DESC')
+  }
 end

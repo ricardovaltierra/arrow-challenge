@@ -11,7 +11,7 @@ class User < ApplicationRecord
                           class_name: 'Arrow',
                           dependent: :destroy
 
-  scope :to_select, -> (current_user) { 
+  scope :to_select, ->(current_user) { 
     where('id != ?', current_user) 
   }
 end
