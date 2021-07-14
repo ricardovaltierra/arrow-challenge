@@ -1,0 +1,24 @@
+<div class="modal-header">
+  <h5 class="modal-title" id="exampleModalLabel">Arrow given #<%= arrow.id %></h5>
+  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+</div>
+<div class="modal-body">
+  <p class="text-secondary mx-3">
+    <strong>DATE:  </strong>
+    <%= l arrow.created_at, format: :short %>
+  </p>
+  <p class="text-secondary mx-3">
+    <strong>BY WHO: </strong>
+    <%= arrow.author.name %>
+  </p>
+  <p class="text-secondary mx-3"> 
+    <strong>WHY?</strong>
+    <%= arrow.description %>
+  </p>
+</div>
+<div class="modal-footer">
+  <%= link_to root_path, class: 'col-12 btn btn-warning btn-sm mt-4', data: { 'bs-dismiss': 'modal' } do %>
+    <p class="my-1 fs-6 text-light">Close</p>
+  <% end %>
+</div>
+

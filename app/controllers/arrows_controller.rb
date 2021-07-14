@@ -4,7 +4,6 @@ class ArrowsController < ApplicationController
 
   def show
     @arrow = Arrow.find(params[:id])
-    @author = @arrow.author
   end
 
   def new
