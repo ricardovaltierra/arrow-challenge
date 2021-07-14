@@ -25,10 +25,10 @@ RSpec.describe 'User sees an individual arrow', type: :system do
     fill_in 'user_email', with: @user_2.email
     fill_in 'user_password', with: @user_2.password
     click_button 'Log in'
-    visit root_path
   end
 
   scenario 'clicking on the one appearing on home page' do
+    visit root_path
     click_link 'More info'
     page.save_screenshot(full: true)
     
