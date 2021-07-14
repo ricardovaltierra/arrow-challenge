@@ -13,7 +13,7 @@
         <h3 class="fw-bolder text-warning"><%= current_user.owned_arrows.count * 20 %> points</h3>
       </div>
       <div class="row my-2">
-        <%= link_to new_arrow_path, class: 'col-1 btn btn-primary btn-sm' do %>
+        <%= link_to '#', class: 'col-1 btn btn-primary btn-sm', data: { 'bs-toggle': 'modal', 'bs-target': '#newArrowModal' } do %>
           <p class="fw-bolder my-1 fs-7">Create arrow</p>
         <% end %>
       </div>
@@ -24,4 +24,13 @@
       <%= render @arrows %>
     </div>
   <% end %>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="newArrowModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <%= render partial: 'arrows/form', locals: { arrow: current_user.authored_arrows.build } %>
+    </div>
+  </div>
 </div>
