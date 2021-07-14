@@ -7,8 +7,8 @@ class Arrow < ApplicationRecord
 
   scope :arrows_with_author, -> (current_user) { 
     current_user
-    .owned_arrows
-    .includes(:author)
-    .order('created_at DESC')
+      .owned_arrows
+      .includes(:author)
+      .order('created_at DESC')
   }
 end
