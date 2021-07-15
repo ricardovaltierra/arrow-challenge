@@ -12,14 +12,14 @@ RSpec.describe 'User edit account', type: :system do
     visit new_user_session_path
     fill_in 'user_email', with: @user.email
     fill_in 'user_password', with: @user.password
-    click_button 'Log in'
+    find_button('Log in').trigger(:click)
     visit edit_user_registration_path
   end
 
   scenario 'with a new name' do
     fill_in 'user_name', with: name
     fill_in 'user_current_password', with: @user.password
-    click_button 'Update'
+    find_button('Update').trigger(:click)
 
     expect(page).to have_text 'Your account has been updated successfully.'
     expect(page).to have_text name
@@ -28,7 +28,7 @@ RSpec.describe 'User edit account', type: :system do
   scenario 'with a new email' do
     fill_in 'user_email', with: email
     fill_in 'user_current_password', with: @user.password
-    click_button 'Update'
+    find_button('Update').trigger(:click)
 
     expect(page).to have_text 'Your account has been updated successfully.'
     expect(page).to have_text email
@@ -38,7 +38,7 @@ RSpec.describe 'User edit account', type: :system do
     fill_in 'user_password', with: password
     fill_in 'user_password_confirmation', with: password
     fill_in 'user_current_password', with: @user.password
-    click_button 'Update'
+    find_button('Update').trigger(:click)
 
     expect(page).to have_text 'Your account has been updated successfully.'
   end
@@ -49,7 +49,7 @@ RSpec.describe 'User edit account', type: :system do
     fill_in 'user_password', with: password
     fill_in 'user_password_confirmation', with: password
     fill_in 'user_current_password', with: @user.password
-    click_button 'Update'
+    find_button('Update').trigger(:click)
 
     expect(page).to have_text 'Your account has been updated successfully.'
     expect(page).to have_text name
@@ -60,14 +60,14 @@ RSpec.describe 'User edit account', type: :system do
     fill_in 'user_password', with: password
     fill_in 'user_password_confirmation', with: 'MyWrongPassword'
     fill_in 'user_current_password', with: @user.password
-    click_button 'Update'
+    find_button('Update').trigger(:click)
 
     expect(page).to have_text "Password confirmation doesn't match Password"
   end
 
   scenario 'without current password to confirm' do
     fill_in 'user_name', with: name
-    click_button 'Update'
+    find_button('Update').trigger(:click)
 
     expect(page).to have_text "Current password can't be blank"
   end
