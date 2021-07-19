@@ -1,4 +1,4 @@
-<div class="col-3 my-3 mx-1 bg-white px-0 pt-3" id="arrow<%= arrow.id%>Card">
+<div class="col-3 my-3 mx-1 bg-white px-0 pt-3">
   <p class="text-secondary mx-3"><strong>DATE:</strong> <%= l arrow.created_at, format: :short %></p>
   </p><p class="text-secondary mx-3"><strong>AUTHOR:</strong> <%= arrow.author.name %></p>
   <%= link_to '#', class: 'col-12 btn btn-warning btn-sm py-2 d-flex justify-content-end px-4', data: { 'bs-toggle': 'modal', 'bs-target': "#viewArrow#{ arrow.id }Detail" } do %>
@@ -14,7 +14,7 @@
 <div class="modal fade" id="viewArrow<%= arrow.id %>Detail" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-      <%= render partial: 'arrows/show', locals: { arrow: arrow, author: @author } %>
+      <%= render partial: 'arrows/show', locals: { arrow: arrow } %>
     </div>
   </div>
 </div>

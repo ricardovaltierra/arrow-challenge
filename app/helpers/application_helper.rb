@@ -13,4 +13,11 @@ module ApplicationHelper
       'bg-secondary-light'
     end
   end
+
+  def current_user_points
+    owned_arrows = current_user.owned_arrows.count * 20
+    authored_arrows = current_user.authored_arrows.count * 5
+
+    owned_arrows + authored_arrows
+  end
 end
