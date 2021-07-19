@@ -29,7 +29,7 @@ RSpec.describe User, type: :model do
         expect(User.to_select(subject).count).to eql 2
       end
 
-      it 'should not return subject\'s id' do
+      it 'should not return subject\'s name' do
         user_1 = create :user
         user_2 = create :user
 
