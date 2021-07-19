@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class ArrowsController < ApplicationController
-  before_action :set_users, only: [:new, :create]
   before_action :authenticate_user!
+  before_action :set_users, only: [:new, :create]
 
   def show
     @arrow = Arrow.find(params[:id])
