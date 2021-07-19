@@ -11,7 +11,7 @@ RSpec.describe 'User Log in', type: :system do
   scenario 'valid with the right credentials' do
     fill_in 'user_email', with: @user.email
     fill_in 'user_password', with: @user.password
-    click_button 'Log in'
+    find_button('Log in').trigger(:click)
 
     expect(page).to have_content 'Signed in successfully.'
     expect(page).to have_text "Hi #{@user.name}"
@@ -22,7 +22,7 @@ RSpec.describe 'User Log in', type: :system do
   scenario 'invalid with unregistered account' do
     fill_in 'user_email', with: Faker::Internet.email
     fill_in 'user_password', with: 'A123pass'
-    click_button 'Log in'
+    find_button('Log in').trigger(:click)
 
     expect(page).to have_no_text 'Signed in successfully.'
     expect(page).to have_text 'Invalid Email or password.'
@@ -32,9 +32,22 @@ RSpec.describe 'User Log in', type: :system do
   scenario 'invalid with invalid password' do
     fill_in 'user_email', with: @user.email
     fill_in 'user_password', with: 'FakePassword'
-    click_button 'Log in'
+    find_button('Log in').trigger(:click)
 
     expect(page).to have_no_text 'Signed in successfully.'
     expect(page).to have_text 'Invalid Email or password.'
+  end
+
+  scenario 'and then Logs out' do
+    fill_in 'user_email', with: @user.email
+    fill_in 'user_password', with: @user.password
+    find_button('Log in').trigger(:click)
+
+    find_link(@user.email).trigger(:click)
+    find_button('Log out').trigger(:click)
+
+    expect(page).not_to have_content @user.email
+    expect(page).not_to have_text @user.name
+    expect(page).to have_text 'Welcome Icalier!'
   end
 end

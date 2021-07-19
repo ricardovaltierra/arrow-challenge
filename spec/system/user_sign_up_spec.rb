@@ -16,7 +16,7 @@ RSpec.describe 'User sign up', type: :system do
     fill_in 'user_email', with: email
     fill_in 'user_password', with: password
     fill_in 'user_password_confirmation', with: password
-    click_button 'Sign up'
+    find_button('Sign up').trigger(:click)
 
     expect(page).to have_text "Hi #{name}"
     expect(page).to have_content('Welcome! You have signed up successfully.')
@@ -29,7 +29,7 @@ RSpec.describe 'User sign up', type: :system do
     fill_in 'user_name', with: user.name
     fill_in 'user_email', with: user.email
     fill_in 'user_password', with: password
-    click_button 'Sign up'
+    find_button('Sign up').trigger(:click)
 
     expect(page).to have_no_text user.email
     expect(page).to have_text 'Email has already been taken'
@@ -42,7 +42,7 @@ RSpec.describe 'User sign up', type: :system do
     fill_in 'user_email', with: email
     fill_in 'user_password', with: password
     fill_in 'user_password_confirmation', with: user.password
-    click_button 'Sign up'
+    find_button('Sign up').trigger(:click)
 
     expect(page).to have_no_text email
     expect(page).to have_text 'Password confirmation doesn\'t match Password'
