@@ -26,7 +26,6 @@ RSpec.describe 'User sees all her arrows', type: :system do
 
     fill_in 'user_email', with: @user_2.email
     fill_in 'user_password', with: @user_2.password
-    # click_button 'Log in'
     find_button('Log in').trigger(:click)
   end
 
